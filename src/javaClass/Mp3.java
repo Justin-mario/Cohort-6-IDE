@@ -8,11 +8,7 @@ public class Mp3 {
 
     public Mp3(boolean isOn, int volume, boolean isMute) {
         this.volume = volume;
-
-
-
-
-            this.isOn = isOn;
+        this.isOn = isOn;
         if (volume <= 0) {
             this.isMute = true;
             volume = 0;
@@ -36,7 +32,7 @@ public class Mp3 {
     }
 
         public int decreaseVolume () {
-        if (volume != 5 && volume != 0)
+        if (volume != 1 && volume != 0)
             volume--;
         return volume;
     }
