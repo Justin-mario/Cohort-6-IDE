@@ -6,14 +6,16 @@ public class StudentAverage {
             Scanner input = new Scanner(System.in);
             double grade ;
            double average = 0;
-           double totalNumberGrade=0;
-           while (totalNumberGrade < 10) {
-               System.out.println("Enter Grade");
+           double gradeCounter=1;
+
+           while (gradeCounter <= 10)
+           {
+               System.out.println("Input Grade: ");
                grade = input.nextDouble();
                average = average + grade;
-               totalNumberGrade++;
+               gradeCounter++;
            }
-           double totalAverage = (average/totalNumberGrade);
+           double totalAverage = (average/10);
            System.out.println("Average is:" + totalAverage);
         }
 
