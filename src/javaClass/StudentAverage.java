@@ -12,8 +12,11 @@ public class StudentAverage {
            {
                System.out.println("Input Grade: ");
                grade = input.nextDouble();
+               if(grade >= 0){
                average = average + grade;
-               gradeCounter++;
+               gradeCounter++;}
+               else{
+                   System.out.println("Grade must not be less than Zero");}
            }
            double totalAverage = (average/10);
            System.out.println("Average is:" + totalAverage);
