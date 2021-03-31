@@ -2,7 +2,7 @@ package ChapterFive;
 
 import java.util.Scanner;
 
-public class FindingMaximumAndMinimumNumbers {
+public class FindingMinimumNumbers {
         public static void main(String[] args) {
             Scanner input = new Scanner ( System.in );
             int minimumNumber;
