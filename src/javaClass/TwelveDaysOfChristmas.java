@@ -1,5 +1,7 @@
 package javaClass;
 
+import javax.swing.*;
+
 public class TwelveDaysOfChristmas {
     public static void main(String[] args) {
         int day = 1;
@@ -60,68 +62,42 @@ public class TwelveDaysOfChristmas {
             }
 
 
-            System.out.println(" Day my true love gave to me ");
+            display(" Day my true love gave to me ");
 
 
                 switch (day) {
                     case 12:
-                        System.out.println(" Twelve Drummers drumming. ");
-
-
-
+                        display(" Twelve Drummers drumming. ");
                     case 11:
-                        System.out.println(" Eleven Pipers Piping ");
-
-
-
+                        display(" Eleven Pipers Piping ");
                     case 10:
-                        System.out.println(" Ten Lords a leaping ");
-
-
+                        display(" Ten Lords a leaping ");
 
                     case 9:
-                        System.out.println(" Nine Ladies Dancing ");
-
-
-
+                        display(" Nine Ladies Dancing ");
                     case 8:
-                        System.out.println(" Eight Maids a milking ");
-
-
+                        display(" Eight Maids a milking ");
 
                     case 7:
-                        System.out.println(" Seven Swans a swimming ");
-
-
+                        display(" Seven Swans a swimming ");
 
                     case 6:
-                        System.out.println(" Six Geese a laying ");
-
-
+                        display(" Six Geese a laying ");
 
                     case 5:
-                        System.out.println(" Five Golden rings ");
-
-
+                        display(" Five Golden rings ");
 
                     case 4:
-                        System.out.println(" Four Calling birds ");
-
-
+                        display(" Four Calling birds ");
 
                     case 3:
-                        System.out.println(" Three French hen ");
-
-
+                        display(" Three French hen ");
 
                     case 2:
-                        System.out.println(" Two Turtle doves ");
-
-
+                        display(" Two Turtle doves ");
 
                     case 1:
-                        System.out.println(" A partridge in a pear tree  \n");
-
+                        display(" A partridge in a pear tree  \n");
                         break;
 
 
@@ -132,4 +108,16 @@ public class TwelveDaysOfChristmas {
             day++;
         }
     }
+    public static void display(String message){
+        JOptionPane.showMessageDialog(null, message);
+    }
 }
+
+
+
+
+
+
+
+
+

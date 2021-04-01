@@ -2,7 +2,7 @@ package javaClass;
 
 import java.util.Scanner;
 
-public class Mp3Test {
+public class Mp3Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 

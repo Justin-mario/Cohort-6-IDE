@@ -2,7 +2,7 @@ package javaClass;
 
 public class TestGrade {
     public static void main(String[] args) {
-     // KateGrade Kata = new KateGrade();
+     // KateGrade Kata1 = new KateGrade();
         int number = 2;
         int sum;
 
@@ -12,8 +12,8 @@ public class TestGrade {
 
            System.out.println("Composite number");
 
-       // System.out.println("Grade" + Kata.calculateGrade(70));
-       // System.out.println("even number " + Kata.isEvenNumber(80));
-        //System.out.println("is Prime number" + Kata.isPrimeNumber(80));
+       // System.out.println("Grade" + Kata1.calculateGrade(70));
+       // System.out.println("even number " + Kata1.isEvenNumber(80));
+        //System.out.println("is Prime number" + Kata1.isPrimeNumber(80));
     }
 }
