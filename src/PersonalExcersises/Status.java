@@ -1,0 +1,5 @@
+package PersonalExcersises;
+
+public enum Status {
+    SINGLE, MARRIEDJOINTFILLINGORWIDOW, MARRIEDFILLINGSEPARATELY, HEADOFHOUSEHOLD,
+}
