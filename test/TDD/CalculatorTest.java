@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -74,5 +76,9 @@ class CalculatorTest {
     @AfterEach
     void tearDown() {
     }
-
+    @Test
+    void calculatorCanCalculateAge(){
+        LocalDate bessieDob = LocalDate.of(2018, 5,8);
+        assertEquals(2, calculator.calculateAge(bessieDob));
+    }
 }

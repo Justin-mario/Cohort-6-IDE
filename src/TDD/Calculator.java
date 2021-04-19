@@ -1,5 +1,9 @@
 package TDD;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
+
 public class Calculator {
 
 
@@ -26,5 +30,11 @@ public class Calculator {
             }
         return number2 - number1;
 
+    }
+
+    public int calculateAge(LocalDate dob) {
+
+        int age = Period.between(dob, LocalDate.now()).getYears();
+        return age;
     }
 }
