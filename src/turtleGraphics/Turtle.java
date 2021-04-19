@@ -11,21 +11,21 @@ public class Turtle {
     public Turtle(Pen pen) {
         this.pen = pen;
         currentDirection = EAST;
-        currentPosition = new Position ( 0,0 );
+        currentPosition = new Position ( 0, 0 );
 
     }
 
     public Pen getPen() {
-        
+
         return pen;
     }
 
     public void movePenUp() {
-        pen.setIsUp(true);
+        pen.setIsUp ( true );
     }
 
     public boolean isPenUp() {
-        return pen.isUp();
+        return pen.isUp ();
     }
 
     public void movePenDown() {
@@ -46,16 +46,18 @@ public class Turtle {
         }
 
     }
-    private void changeCurrentDirection(Direction newDirection){
+
+    private void changeCurrentDirection(Direction newDirection) {
         currentDirection = newDirection;
     }
 
     public void moveForwardBy(int numberOfSteps) {
-        switch (currentDirection){
-            case EAST -> currentPosition.increaseColumnPositionBy(numberOfSteps);
-            case SOUTH -> currentPosition.increaseRowPositionBy(numberOfSteps);
-            case WEST -> currentPosition.decreaseColumnPositionBy(numberOfSteps);
-            case NORTH -> currentPosition.decreaseRowPositionBy(numberOfSteps);
+        numberOfSteps = numberOfSteps - 1;
+        switch (currentDirection) {
+            case EAST -> currentPosition.increaseColumnPositionBy ( numberOfSteps );
+            case SOUTH -> currentPosition.increaseRowPositionBy ( numberOfSteps );
+            case WEST -> currentPosition.decreaseColumnPositionBy ( numberOfSteps );
+            case NORTH -> currentPosition.decreaseRowPositionBy ( numberOfSteps );
         }
     }
 
@@ -72,4 +74,27 @@ public class Turtle {
         }
 
     }
+
+
+    public void writeOn(SketchPad sketchPad, int numberOfSteps) {
+        if (!isPenUp ()) {
+            int counter = 0;
+            switch (currentDirection) {
+                case EAST, WEST, SOUTH, NORTH -> {
+                    while (counter < numberOfSteps) {
+                        int rowPosition = currentPosition.getRowPosition ();
+                        int columnPosition = currentPosition.getColumnPosition ();
+                        sketchPad.getFloor ()[rowPosition][columnPosition + counter] = 1;
+                        counter++;
+                    }
+                    moveForwardBy ( numberOfSteps );
+                }
+
+            }
+
+
+        }
+
+    }
 }
+
