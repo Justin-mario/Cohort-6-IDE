@@ -20,9 +20,9 @@ public class FederalPersonalTaxRateSpec {
     @Test
     @DisplayName ( "Singles Can Pay Tax At 10% On Earnings below 8350" )
     void checkSinglesCanPay10PercentTax() {
-        taxPaid = taxRate.pay10PercentTaxRateForSingles ( 8000, SINGLE);
+        taxPaid = taxRate.pay10PercentTaxRate ( 8000, SINGLE);
         assertEquals ( 800, taxPaid );
-        taxPaid = taxRate.pay10PercentTaxRateForSingles ( 8350,SINGLE );
+        taxPaid = taxRate.pay10PercentTaxRate ( 8350,SINGLE );
         assertEquals ( 835, taxPaid );
 
     }
@@ -30,21 +30,21 @@ public class FederalPersonalTaxRateSpec {
     @Test
     @DisplayName ( "Single Can not Input Negative Amount As Earning" )
     void checkSinglesCannotInputNegativeAmountAsEarning() {
-        taxPaid = taxRate.pay10PercentTaxRateForSingles ( -10000, SINGLE );
+        taxPaid = taxRate.pay10PercentTaxRate ( -10000, SINGLE );
         assertEquals ( 0, taxPaid );
     }
 
     @Test
     @DisplayName ( "Singles Can not Access A Wrong Tax Package" )
     void checkSinglesCannotAccessAWrongPackage() {
-        taxPaid = taxRate.pay10PercentTaxRateForSingles ( 1000, HEADOFHOUSEHOLD );
+        taxPaid = taxRate.pay10PercentTaxRate ( 1000, HEADOFHOUSEHOLD );
         assertEquals ( 0, taxPaid );
     }
 
     @Test
     @DisplayName ( "Singles Can not Pay 10% Tax On Earning Above 8350 " )
     void checkSinglesCannotPay10PercentTaxOnEarningAbove_8350() {
-        taxPaid = taxRate.pay10PercentTaxRateForSingles ( 9000,SINGLE );
+        taxPaid = taxRate.pay10PercentTaxRate ( 9000,SINGLE );
         assertEquals ( 0, taxPaid );
     }
 
@@ -102,10 +102,20 @@ public class FederalPersonalTaxRateSpec {
 
     @Test
     @DisplayName ( "Widow And Married couples Can Jointly Pay Marginal Tax At 10% " )
-    void userCanPayOnEarnings_below_8350() {
-        taxPaid = taxRate.pay10PercentTaxRateForMarriedJointFillingOrWidow ( 4500, MARRIEDJOINTFILLINGORWIDOW);
+    void checkMarriedCoupleOrWidowCanPayOnEarnings_below_8350() {
+        taxPaid = taxRate.pay10PercentTaxRate ( 4500, MARRIEDJOINTFILLINGORWIDOW);
         assertEquals ( 450, taxPaid );
-        taxPaid = taxRate.pay10PercentTaxRateForMarriedJointFillingOrWidow ( 8350,MARRIEDJOINTFILLINGORWIDOW );
+        taxPaid = taxRate.pay10PercentTaxRate ( 16700,MARRIEDJOINTFILLINGORWIDOW );
+        assertEquals ( 1670, taxPaid );
+
+    }
+
+    @Test
+    @DisplayName ( "Married But Filling Separately Can Pay Marginal Tax At 10% " )
+    void checkMarriedButFillingSeparatelyCanPayOnEarnings_below_8350() {
+        taxPaid = taxRate.pay10PercentTaxRate ( 4500, MARRIEDJOINTFILLINGORWIDOW);
+        assertEquals ( 450, taxPaid );
+        taxPaid = taxRate.pay10PercentTaxRate ( 8350,MARRIEDJOINTFILLINGORWIDOW );
         assertEquals ( 835, taxPaid );
 
     }

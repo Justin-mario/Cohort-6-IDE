@@ -28,4 +28,10 @@ class MultipleOfANumberTest {
         assertThrows ( ArithmeticException.class, () -> assertTrue ( MultipleOfANumber.isMultipleOfTwoNumbers ( 0, 400 ) ) );
     }
 
+    @Test
+    void checkThatFirstNumberCannotBeLessThanSecondNumber() {
+
+        assertThrows ( ArithmeticException.class, () -> assertTrue ( MultipleOfANumber.isMultipleOfTwoNumbers ( 20, 400 ) ) );
+    }
+
 }
