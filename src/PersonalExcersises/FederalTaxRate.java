@@ -7,10 +7,9 @@ public class FederalTaxRate {
     private double taxRate;
 
     public double pay10PercentTaxRate(double amountEarned, Status fillingStatus) {
-
+        taxRate = 0.1;
         switch (fillingStatus) {
             case SINGLE: {
-                taxRate = 0.1;
                 if (amountEarned <= 8350 && amountEarned > 0 && fillingStatus == SINGLE) {
                     try {
                         taxPaid = amountEarned * taxRate;
@@ -18,14 +17,11 @@ public class FederalTaxRate {
                     } catch (Throwable e) {
                         System.out.print ( "You Cant Pay less Than 10% on Your Earnings" + e );
                     }
-
                 }
                 else
                     return 0.0;
-
             }
             case MARRIEDJOINTFILLINGORWIDOW: {
-                taxRate = 0.1;
                 if (amountEarned <= 16700 && amountEarned > 0 && fillingStatus == MARRIEDJOINTFILLINGORWIDOW) {
                     taxPaid = amountEarned * taxRate;
                     return taxPaid;
@@ -34,28 +30,69 @@ public class FederalTaxRate {
                     return 0.0;
             }
             case MARRIEDFILLINGSEPARATELY: {
-                taxRate = 0.1;
-                if (amountEarned <= 8351 && amountEarned > 0 && fillingStatus == MARRIEDJOINTFILLINGORWIDOW) {
+                if (amountEarned <= 8350 && amountEarned > 0 && fillingStatus == MARRIEDFILLINGSEPARATELY) {
                     taxPaid = amountEarned * taxRate;
                     return taxPaid;
                 }
-
+                else
+                    return 0.0;
+            }
+            case HEADOFHOUSEHOLD: {
+                if (amountEarned <= 11950 && amountEarned > 0 && fillingStatus == HEADOFHOUSEHOLD) {
+                    taxPaid = amountEarned * taxRate;
+                    return taxPaid;
+                }
+                else
+                    return 0.0;
             }
 
+            default:
+                throw new IllegalStateException ( "Unexpected value: " + fillingStatus + amountEarned );
+        }
+
+    }
+
+
+
+    public double pay15PercentTaxRate(double amountEarned, Status fillingStatus){
+        taxRate = 0.15;
+        switch (fillingStatus) {
+            case SINGLE: {
+                if (amountEarned <= 33950 && amountEarned >= 8351 && fillingStatus == SINGLE) {
+                    try {
+                        taxPaid = amountEarned * taxRate;
+                        return taxPaid;
+                    } catch (Throwable e) {
+                        System.out.printf ( "You can not pay less than 15 percent"  + e);
+                    }
+                }
+                else
+                    return 0.0;
+
+            }
+            case MARRIEDJOINTFILLINGORWIDOW: {
+                    if (amountEarned <= 67900 && amountEarned >= 16701 && fillingStatus == MARRIEDJOINTFILLINGORWIDOW) {
+                            taxPaid = amountEarned * taxRate;
+                            return taxPaid;}
+                    else
+                        return 0.0; }
+            case MARRIEDFILLINGSEPARATELY:{
+                if (amountEarned <= 33950 && amountEarned >= 8351 && fillingStatus == MARRIEDFILLINGSEPARATELY) {
+                    taxPaid = amountEarned * taxRate;
+                    return taxPaid;}
+                else
+                    return 0.0;
+            }
+            case HEADOFHOUSEHOLD: {
+                if (amountEarned <= 45500 && amountEarned >= 11951 && fillingStatus == HEADOFHOUSEHOLD) {
+                    taxPaid = amountEarned * taxRate;
+                    return taxPaid;}
+                else
+                    return 0.0;
+            }
         }
         return taxPaid;
     }
-
-        public double pay15PercentTaxRateForSingles ( double amountEarned, Status fillingStatus){
-            taxRate = 0.15;
-            if (amountEarned <= 33950 && amountEarned >= 8350 && fillingStatus == SINGLE) {
-                taxPaid = amountEarned * taxRate;
-                return taxPaid;
-            } else
-                return 0;
-
-
-        }
 
         public double pay25PercentTaxRateForSingles ( double amountEarned, Status fillingStatus){
             taxRate = 0.25;
