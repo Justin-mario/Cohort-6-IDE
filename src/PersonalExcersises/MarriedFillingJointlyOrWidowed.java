@@ -1,9 +1,10 @@
 package PersonalExcersises;
 
-public class MarriedFillingJointlyOrWidowed {
+public class MarriedFillingJointlyOrWidowed extends FederalTaxRate implements PayableTaxRate {
     private double taxRate;
     private double taxToBePaid;
 
+    @Override
     public double tenPercentTaxRate(double amountEarned){
         if (amountEarned <= 16700 && amountEarned > 0.0){
             taxRate = 0.1;
@@ -13,6 +14,7 @@ public class MarriedFillingJointlyOrWidowed {
             return 0.0;
     }
 
+    @Override
     public double fifteenPercentTaxRate(double amountEarned){
         if (amountEarned <=67900 && amountEarned >= 16701){
             taxRate = 0.15;
@@ -26,6 +28,7 @@ public class MarriedFillingJointlyOrWidowed {
             return 0.0;
     }
 
+    @Override
     public double twenty_fivePercentTaxRate(double amountEarned){
         if (amountEarned <= 137050 && amountEarned >= 67901){
             taxRate = 0.25;
@@ -35,6 +38,7 @@ public class MarriedFillingJointlyOrWidowed {
             return 0.0;
     }
 
+    @Override
     public double twenty_eightPercentTaxRate(double amountEarned){
         if (amountEarned <= 208850 && amountEarned >= 137051){
             taxRate = 0.28;
@@ -44,6 +48,7 @@ public class MarriedFillingJointlyOrWidowed {
             return 0.0;
     }
 
+    @Override
     public double thirty_threePercentTaxRate(double amountEarned){
         if (amountEarned <= 372950 && amountEarned >= 208851){
             taxRate = 0.33;
@@ -53,6 +58,7 @@ public class MarriedFillingJointlyOrWidowed {
             return 0.0;
     }
 
+    @Override
     public double thirty_fivePercentTaxRate(double amountEarned){
         if (amountEarned >= 372951){
             taxRate = 0.35;

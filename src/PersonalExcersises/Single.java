@@ -1,9 +1,10 @@
 package PersonalExcersises;
 
-public class Single {
+public class Single extends FederalTaxRate implements PayableTaxRate {
     private double taxRate;
     private double taxToBePaid;
 
+    @Override
     public double tenPercentTaxRate(double amountEarned){
         if (amountEarned <= 8350 && amountEarned > 0.0){
         taxRate = 0.1;
@@ -13,6 +14,7 @@ public class Single {
             return 0.0;
     }
 
+    @Override
     public double fifteenPercentTaxRate(double amountEarned){
         if (amountEarned <=33950 && amountEarned >= 8351){
         taxRate = 0.15;
@@ -26,6 +28,7 @@ public class Single {
             return 0.0;
     }
 
+    @Override
     public double twenty_fivePercentTaxRate(double amountEarned){
         if (amountEarned <= 82250 && amountEarned >= 33951){
         taxRate = 0.25;
@@ -35,6 +38,7 @@ public class Single {
             return 0.0;
     }
 
+    @Override
     public double twenty_eightPercentTaxRate(double amountEarned){
         if (amountEarned <= 171550 && amountEarned >= 82251){
         taxRate = 0.28;
@@ -44,6 +48,7 @@ public class Single {
             return 0.0;
     }
 
+    @Override
     public double thirty_threePercentTaxRate(double amountEarned){
         if (amountEarned <= 372950 && amountEarned >= 171551){
         taxRate = 0.33;
@@ -53,6 +58,7 @@ public class Single {
             return 0.0;
     }
 
+    @Override
     public double thirty_fivePercentTaxRate(double amountEarned){
         if (amountEarned >= 372951){
         taxRate = 0.35;

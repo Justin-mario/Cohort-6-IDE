@@ -4,29 +4,29 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static PersonalExcersises.Status.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class FederalPersonalTaxRateSpec {
     @BeforeEach
     void before_each_test() {
-        taxRate = new FederalTaxRate ();
+
         singleTaxRate = new Single ();
-        marriedJointlyTaxRate = new MarriedFillingJointlyOrWidowed();
+        marriedFillingJointlyTaxRate = new MarriedFillingJointlyOrWidowed();
         marriedFillingTaxSeparately = new MarriedFillingSeparately ();
         headOfHouseHoldTax = new HeadOfHouseHold();
     }
+
     Single singleTaxRate;
-    MarriedFillingJointlyOrWidowed marriedJointlyTaxRate;
+    MarriedFillingJointlyOrWidowed marriedFillingJointlyTaxRate;
     MarriedFillingSeparately marriedFillingTaxSeparately;
     HeadOfHouseHold headOfHouseHoldTax;
-    FederalTaxRate taxRate;
     double taxPaid;
 
     @Test
     @DisplayName ( "Singles Can Pay Tax At 10% On Earnings below 8350" )
-    void checkSinglesCanPay10PercentTax() {
+    void checkSinglesCanPay10PercentTaxOnEarning() {
         taxPaid = singleTaxRate.tenPercentTaxRate ( 8000);
         assertEquals ( 800, taxPaid );
         taxPaid = singleTaxRate.tenPercentTaxRate ( 8350);
@@ -103,54 +103,54 @@ public class FederalPersonalTaxRateSpec {
     @Test
     @DisplayName ( "Widow Or Married couples Can Jointly Pay Tax At 10% Rate On Earnings Below 16,700 " )
     void checkMarriedCoupleOrWidowCanPayTax() {
-        taxPaid = marriedJointlyTaxRate.tenPercentTaxRate ( 4500);
+        taxPaid = marriedFillingJointlyTaxRate.tenPercentTaxRate ( 4500);
         assertEquals ( 450, taxPaid );
-        taxPaid = marriedJointlyTaxRate.tenPercentTaxRate ( 16700 );
+        taxPaid = marriedFillingJointlyTaxRate.tenPercentTaxRate ( 16700 );
         assertEquals ( 1670, taxPaid );
     }
 
     @Test
     @DisplayName ( "Widow Or Married couples Can Jointly Pay Tax At 15% On Earnings Between 16,701 and 67,900 " )
     void checkMarriedCoupleOrWidowCanPayOnEarnings() {
-        taxPaid = marriedJointlyTaxRate.fifteenPercentTaxRate ( 16701);
+        taxPaid = marriedFillingJointlyTaxRate.fifteenPercentTaxRate ( 16701);
         assertEquals ( 2505.15, taxPaid );
-        taxPaid = marriedJointlyTaxRate.fifteenPercentTaxRate ( 67900 );
+        taxPaid = marriedFillingJointlyTaxRate.fifteenPercentTaxRate ( 67900 );
         assertEquals ( 10185.0, taxPaid );
     }
 
     @Test
     @DisplayName ( "Widow Or Married couples Can Jointly Pay Tax At 25% On Earnings Between 67,901 and 137,050" )
     void checkMarriedCoupleOrWidowCanPay25PercentTaxOnEarnings() {
-        taxPaid = marriedJointlyTaxRate.twenty_fivePercentTaxRate ( 67901);
+        taxPaid = marriedFillingJointlyTaxRate.twenty_fivePercentTaxRate ( 67901);
         assertEquals ( 16975.25, taxPaid );
-        taxPaid = marriedJointlyTaxRate.twenty_fivePercentTaxRate ( 137050 );
+        taxPaid = marriedFillingJointlyTaxRate.twenty_fivePercentTaxRate ( 137050 );
         assertEquals ( 34262.5, taxPaid );
     }
 
     @Test
     @DisplayName ( "Widow Or Married couples Can Jointly Pay Marginal Tax At 28% On Earnings Between 137,051 and 208,850" )
     void checkMarriedCoupleOrWidowCanPay28PercentTaxOnEarnings() {
-        taxPaid = marriedJointlyTaxRate.twenty_eightPercentTaxRate ( 137051);
+        taxPaid = marriedFillingJointlyTaxRate.twenty_eightPercentTaxRate ( 137051);
         assertEquals ( 38374.280000000006, taxPaid );
-        taxPaid = marriedJointlyTaxRate.twenty_eightPercentTaxRate ( 208850 );
+        taxPaid = marriedFillingJointlyTaxRate.twenty_eightPercentTaxRate ( 208850 );
         assertEquals ( 58478.00000000001, taxPaid );
     }
 
     @Test
     @DisplayName ( "Widow Or Married couples Can Jointly Pay Marginal Tax At 33% On Earnings Between 208,851 and 372,950" )
     void checkMarriedCoupleOrWidowCanPay33PercentTaxOnEarnings () {
-        taxPaid = marriedJointlyTaxRate.thirty_threePercentTaxRate ( 208851);
+        taxPaid = marriedFillingJointlyTaxRate.thirty_threePercentTaxRate ( 208851);
         assertEquals ( 68920.83, taxPaid );
-        taxPaid = marriedJointlyTaxRate.thirty_threePercentTaxRate ( 372950 );
+        taxPaid = marriedFillingJointlyTaxRate.thirty_threePercentTaxRate ( 372950 );
         assertEquals ( 123073.5, taxPaid );
     }
 
     @Test
     @DisplayName ( "Widow Or Married couples Can Jointly Pay Marginal Tax At 35% On Earnings From 372,951 And Above " )
     void checkMarriedCoupleOrWidowCanPay35PercentTaxOnEarnings() {
-        taxPaid = marriedJointlyTaxRate.thirty_fivePercentTaxRate ( 372951);
+        taxPaid = marriedFillingJointlyTaxRate.thirty_fivePercentTaxRate ( 372951);
         assertEquals ( 130532.84999999999, taxPaid );
-        taxPaid = marriedJointlyTaxRate.thirty_fivePercentTaxRate ( 500000 );
+        taxPaid = marriedFillingJointlyTaxRate.thirty_fivePercentTaxRate ( 500000 );
         assertEquals ( 175000, taxPaid );
     }
 
@@ -225,5 +225,42 @@ public class FederalPersonalTaxRateSpec {
         assertEquals ( 1792.6499999999999, taxPaid );
         taxPaid = headOfHouseHoldTax.fifteenPercentTaxRate ( 45500);
         assertEquals ( 6825, taxPaid );
+    }
+
+    @Test
+    @DisplayName ( "Head Of House Hold Can Pay Tax At 25% On Earnings between 45,501 and 117,450" )
+    void checkHeadOfHouseHoldCanPay25PercentTaxOnEarning() {
+        taxPaid = headOfHouseHoldTax.twenty_fivePercentTaxRate ( 45501);
+        assertEquals ( 11375.25, taxPaid );
+        taxPaid = headOfHouseHoldTax.twenty_fivePercentTaxRate ( 117450);
+        assertEquals ( 29362.5, taxPaid );
+    }
+
+    @Test
+    @DisplayName ( "Head Of House Hold Can Pay Tax At 28% On Earnings between 117,451 and 190,200" )
+    void checkHeadOfHouseHoldCanPay28PercentTaxOnEarning() {
+        taxPaid = headOfHouseHoldTax.twenty_eightPercentTaxRate ( 117451);
+        assertEquals ( 32886.280000000006, taxPaid );
+        taxPaid = headOfHouseHoldTax.twenty_eightPercentTaxRate ( 190200);
+        assertEquals ( 53256.00000000001, taxPaid );
+    }
+
+
+    @Test
+    @DisplayName ( "Head Of House Hold Can Pay Tax At 33% On Earnings between 190,201 and 372,950" )
+    void checkHeadOfHouseHoldCanPay33PercentTaxOnEarning() {
+        taxPaid = headOfHouseHoldTax.thirty_threePercentTaxRate ( 190201);
+        assertEquals ( 62766.33, taxPaid );
+        taxPaid = headOfHouseHoldTax.thirty_threePercentTaxRate ( 372950);
+        assertEquals ( 123073.5, taxPaid );
+    }
+
+    @Test
+    @DisplayName ( "Head Of House Hold Can Pay Tax At 35% On Earnings from 372,951" )
+    void checkHeadOfHouseHoldCanPay35PercentTaxOnEarning() {
+        taxPaid = headOfHouseHoldTax.thirty_fivePercentTaxRate ( 372951);
+        assertEquals ( 130532.84999999999, taxPaid );
+        taxPaid = headOfHouseHoldTax.thirty_fivePercentTaxRate ( 380000);
+        assertEquals ( 133000, taxPaid );
     }
 }
